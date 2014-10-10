@@ -8,13 +8,14 @@ namespace _1DV402.S2.L1A
     {
         
         private int _count;// i den här variabeln har man antal gissningar man gjort
-        private int _number;//här har man siffran man matat in  
+        private int _number = 1;//här har man siffran man matat in  
         public const int MaxNumberOfGuesses = 7 ;//antal gånger man kan gissa bestäms i den här variablerna 
 
          
 
         public SecretNumber()
         {
+            Initialize();
         }
 
         public bool MakeGuess(int number)
@@ -27,7 +28,7 @@ namespace _1DV402.S2.L1A
                 throw new ArgumentOutOfRangeException(); 
             }
 
-            if (number > _number)// kontrollerar om  det inmatade talet  är större än det inmatade talet , om den är det visas följande text
+           else  if (number > _number)// kontrollerar om  det inmatade talet  är större än det inmatade talet , om den är det visas följande text
             {
                 Console.WriteLine("numeret är för högt");
                 klart = false;
@@ -39,30 +40,31 @@ namespace _1DV402.S2.L1A
             }
 
 
-            if (number < _number)// kontrollerar om  det inmatade talet  är större än det inmatade talet, om den är det visas följande text
+            else if (number < _number)// kontrollerar om  det inmatade talet  är mindre än det inmatade talet, om den är det visas följande text
             {
                 Console.WriteLine("numeret är för lågt");
                 klart = false;
 
-                if (_count == 7)//kontrollerar om man gjort 7 försök, har man gjort det så presentras texten i if satsen   
+               if (_count == 7)//kontrollerar om man gjort 7 försök, har man gjort det så presentras texten i if satsen   
                 {
                     Console.WriteLine("det hemliga talet var {0}", _number);
                 }
             }
 
 
-            if (number == _number)//när du gissat rät, är varibel 1 lika med varibel 2 så aktiveras den här if satsen   
+            else  if (number == _number)//när du gissat rät, är varibel 1 lika med varibel 2 så aktiveras den här if satsen   
             {
                 _count = _count + 1;
                 Console.WriteLine("Grattis!!!, Du gissade rätt efter {0} försök",_count);
                 klart = true;
             }
 
-            if (_count >= 7)
+            else  if (_count >= 7)
             {
                 throw new ApplicationException();
             }
 
+            _count++;
 
             return klart;
         }
