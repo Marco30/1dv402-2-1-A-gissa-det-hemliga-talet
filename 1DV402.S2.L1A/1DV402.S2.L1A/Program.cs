@@ -57,6 +57,7 @@ namespace _1DV402.S2.L1A
                     {
                         Console.WriteLine("Ett oväntat fel inträffade! Programmet avbryts.");
                         Console.WriteLine(ex.Message);
+                
                         return;
                     }
                 }
@@ -67,6 +68,7 @@ namespace _1DV402.S2.L1A
                 continueGame = Console.ReadKey(true).Key != ConsoleKey.N;
                 Console.CursorVisible = true;
                 Console.ResetColor();
+          
             } while (continueGame);
 
             
