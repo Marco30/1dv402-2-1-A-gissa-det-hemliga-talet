@@ -15,8 +15,8 @@ namespace _1DV402.S2.L1A
 
         public SecretNumber()
         {
-            
-            Initialize();
+
+            Initialize();//anropar metoden Initialize
             
         }
 
@@ -52,18 +52,20 @@ namespace _1DV402.S2.L1A
                 klart = true;
             }
 
-          
-           if (_count >= 7)
-            {
-                throw new ApplicationException();
-            }
 
-           if (_count == 7)//kontrollerar om man gjort 7 försök, har man gjort det så presentras texten i if satsen   
+           if (_count >= 7)
            {
+               throw new ApplicationException();
+           }
+
+           if (_count == 6)//kontrollerar om man gjort 7 försök, har man gjort det så presentras texten i if satsen   
+           {
+               Console.WriteLine();
                Console.WriteLine("det hemliga talet var {0}", _number);
            }
 
            kvar--;
+
            _count++;
 
             return klart;
