@@ -19,18 +19,22 @@ namespace _1DV402.S2.L1A
 
         public bool MakeGuess(int number)
         {
-            
+            bool klart = false;
+
+            if (number < 1 || number > 100)
+            {
+                throw new ArgumentOutOfRangeException(); 
+            }
+           
+
+            return klart;
         }
 
         public void Initialize()
         {
             Random randomNumber = new Random();// anropar funktionen  som  slumpar fram nummer 
-
-            _number = randomNumber.Next(1, 100); // variabeln får ett slumpat heltal 
-
-
-            _count = 0; // variabeln _count får värdet 0
-
+            _number = randomNumber.Next(1, 100); // variabeln får ett slumpat heltal
+            _count = 0; // variabeln _count får värdet 
         }
     }
 }
