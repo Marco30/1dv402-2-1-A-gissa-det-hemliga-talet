@@ -11,7 +11,7 @@ namespace _1DV402.S2.L1A
         private int _number;//här har man siffran man matat in  
         public const int MaxNumberOfGuesses = 7 ;//antal gånger man kan gissa bestäms i den här variablerna 
 
-         
+        private int kvar;// visar hur många förösk man har kvar 
 
         public SecretNumber()
         {
@@ -23,7 +23,6 @@ namespace _1DV402.S2.L1A
         public bool MakeGuess(int number)
         {
             bool klart = false;
-
             
             if (number < 1 || number > 100)// om  det inmatade numret användaren matat in, inte håller sig inom ramarna 1 till 100 så hanteras det här 
             {
@@ -32,7 +31,7 @@ namespace _1DV402.S2.L1A
                 
             if (number > _number)// kontrollerar om  det inmatade talet  är större än det inmatade talet , om den är det visas följande text
             {
-                Console.WriteLine("numeret är för högt");
+                Console.WriteLine("{0} är för högt - du har {1} försök kvar", number, kvar);
                 klart = false;
 
             }
@@ -40,7 +39,7 @@ namespace _1DV402.S2.L1A
 
            if (number < _number)// kontrollerar om  det inmatade talet  är mindre än det inmatade talet, om den är det visas följande text
             {
-                Console.WriteLine("numeret är för lågt");
+                Console.WriteLine("{0} är för högt - du har {1} försök kvar", number, kvar);
                 klart = false;
 
             }
@@ -64,7 +63,7 @@ namespace _1DV402.S2.L1A
                Console.WriteLine("det hemliga talet var {0}", _number);
            }
 
-
+           kvar--;
            _count++;
 
             return klart;
@@ -75,13 +74,15 @@ namespace _1DV402.S2.L1A
             Random randomNumber = new Random();// anropar funktionen  som  slumpar fram nummer 
             _number = randomNumber.Next(1, 100); // variabeln får ett slumpat heltal
 
-            if (_number < 1 || _number > 100)
+            if (_number < 1 || _number > 100) // om det inmatade numret användaren matat in, inte håller sig inom ramarna 1 till 100 så hanteras det här 
             {
                 throw new ArgumentException();
             }
 
             _count = 0; // variabeln _count får värdet 
-          
+
+            kvar = 6;
+
         }
     }
 }
